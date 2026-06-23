@@ -191,12 +191,6 @@ a:focus-visible, button:focus-visible {
   color: var(--off-white);
 }
 
-.logo-img {
-  height: 32px;
-  width: auto;
-  display: block;
-}
-
 .logo-rec {
   width: 9px;
   height: 9px;
