@@ -1,324 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KVS Productions — Horror Sound Design</title>
-  <meta name="description" content="KVS Productions — horror SFX, jumpscares, ambient loops and custom sound design for games, film and analog horror.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KVS Productions — Sound Design Portfolio</title>
+<meta name="description" content="KVS Productions — horror sound design portfolio. Jumpscares, ambient horror loops, and OST work.">
 
-  <!-- Google Fonts: a battered condensed display face for headings, a clean grotesk for body text -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Two fonts only: a slightly creepy condensed display face for headings,
+     and a soft rounded sans for body text so the site feels approachable
+     up close even though the theme is horror. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Creepster&family=Nunito:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- ============ FILM GRAIN / STATIC OVERLAY ============ -->
-  <!-- Fixed full-screen noise layer sitting above everything else. Purely decorative, ignored by screen readers. -->
-  <div class="grain" aria-hidden="true"></div>
-  <div class="scanlines" aria-hidden="true"></div>
+<!-- =========================================================
+     TV FRAME
+     Everything lives inside #tv. This div is what gets the
+     curved-corner mask, the scanlines, the vignette, and the
+     flicker-on-load animation — like the whole site is being
+     watched on an old television.
+     ========================================================= -->
+<div id="tv">
+
+  <!-- overlay layers, purely decorative -->
+  <div class="crt-scanlines" aria-hidden="true"></div>
+  <div class="crt-vignette" aria-hidden="true"></div>
+  <div class="crt-flicker" aria-hidden="true"></div>
 
   <!-- ============ NAV ============ -->
   <header class="site-header">
-    <div class="header-inner">
-      <a href="#top" class="brand">KVS<span class="brand-dot">_</span></a>
-      <nav class="nav" aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#work">Work</a>
-        <a href="#audio">Audio</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
+    <a href="#top" class="logo-mark">
+      <span class="logo-rec" aria-hidden="true"></span>
+      KVS<span class="logo-blip">.</span>
+    </a>
+    <nav aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#listen">Listen</a>
+      <a href="#hire">Hire Me</a>
+    </nav>
   </header>
 
   <main id="top">
 
     <!-- ============ HERO ============ -->
-    <section class="hero" id="hero">
-      <!-- Torn paper / static strip along the top edge -->
-      <div class="hero-noise-band" aria-hidden="true"></div>
+    <section class="hero">
+      <div class="static-burst" aria-hidden="true"></div>
 
-      <div class="hero-inner">
-        <p class="hero-eyebrow">// REC &nbsp;·&nbsp; AUDIO HORROR DIVISION</p>
+      <p class="channel-label">CH. 13 — NOW PLAYING</p>
 
-        <h1 class="hero-title glitch" data-text="KVS PRODUCTIONS">
-          KVS PRODUCTIONS
-        </h1>
+      <h1 class="hero-title" data-text="KVS PRODUCTIONS">KVS PRODUCTIONS</h1>
 
-        <p class="hero-subtitle">
-          Horror SFX <span class="dot">•</span> Jumpscares <span class="dot">•</span> Ambient <span class="dot">•</span> Custom Sound Design
-        </p>
+      <p class="hero-tagline">sound design for things that shouldn't have a sound</p>
 
-        <div class="hero-actions">
-          <a href="#work" class="btn btn-primary">View the work</a>
-          <a href="#contact" class="btn btn-ghost">Get in touch</a>
-        </div>
+      <p class="hero-line">jumpscares · ambience · game &amp; OST audio</p>
 
-        <p class="hero-tape">⏺ STATIC DETECTED — SIGNAL UNSTABLE — AUDIO LOG CORRUPTED</p>
-      </div>
-
-      <!-- bottom torn edge -->
-      <div class="torn-edge" aria-hidden="true"></div>
-    </section>
-
-    <!-- ============ ABOUT ============ -->
-    <section class="about" id="about">
-      <div class="section-inner">
-        <div class="section-head">
-          <span class="section-tag">001 / ABOUT</span>
-          <h2 class="section-title">Sound is the scare.</h2>
-        </div>
-
-        <div class="about-grid">
-          <div class="about-text">
-            <p>
-              KVS Productions is a one-person sound design studio built around a simple idea:
-              the picture sells the scare, but the <em>sound</em> is what makes it real.
-              I design horror audio for games, short films, found-footage projects, and analog
-              horror — the static, the room tones, the things you hear right before something
-              goes wrong.
-            </p>
-            <p>
-              Every pack is built from layered field recordings, modular synthesis, and a lot of
-              deliberately broken signal chains — tape hiss, bit-crushed transients, mic bleed,
-              dying batteries. Clean horror is forgettable. Dirty, physical, <em>analog</em> horror
-              sticks.
-            </p>
-            <p>
-              I work with indie devs, horror YouTubers, and analog horror creators who need audio
-              that doesn't sound like a stock library — built specifically for the moment it has
-              to land in.
-            </p>
-          </div>
-
-          <ul class="about-specs">
-            <li><span class="spec-label">Output</span><span class="spec-value">Jumpscares · Ambient loops · UI &amp; game SFX</span></li>
-            <li><span class="spec-label">For</span><span class="spec-value">Games · Film · Analog horror · YouTube</span></li>
-            <li><span class="spec-label">Format</span><span class="spec-value">WAV / 48kHz · Stems on request</span></li>
-            <li><span class="spec-label">Turnaround</span><span class="spec-value">Custom briefs welcome</span></li>
-          </ul>
-        </div>
+      <div class="hero-buttons">
+        <a href="#work" class="btn btn-fill">see the work</a>
+        <a href="#listen" class="btn btn-line">press play</a>
       </div>
     </section>
 
-    <!-- ============ WORK / PORTFOLIO ============ -->
+    <!-- ============ ABOUT (short, personal, no corporate-speak) ============ -->
+    <section class="about">
+      <p>
+        hi, i'm the person behind KVS Productions — i make horror audio.
+        jumpscares that actually land, ambience that makes a hallway feel
+        wrong, and full scores for games, OSTs, and fan projects. this page
+        is just a portfolio of stuff i've made, mostly for fun and practice.
+        everything below is real work, not stock packs.
+      </p>
+    </section>
+
+    <!-- ============ WORK ============ -->
     <section class="work" id="work">
-      <div class="section-inner">
-        <div class="section-head">
-          <span class="section-tag">002 / ARCHIVE</span>
-          <h2 class="section-title">Selected work.</h2>
-        </div>
+      <h2 class="section-title">things i've made<span class="title-static">_</span></h2>
 
-        <!-- 
-          PORTFOLIO GRID
-          To add a new project card: copy one .work-card block and edit
-          the tag, title, description and tracklist text.
-        -->
-        <div class="work-grid">
+      <div class="work-grid">
 
-          <article class="work-card">
-            <div class="work-card-top">
-              <span class="work-tag">PACK</span>
-              <span class="work-id">FILE_01</span>
-            </div>
-            <h3 class="work-title">Jumpscare Packs</h3>
-            <p class="work-desc">
-              High-impact, layered shock stingers built for maximum reaction —
-              low-end slams, tape-warped screeches, and sharp transient hits
-              designed to cut through a mix instantly.
-            </p>
-            <ul class="work-meta">
-              <li>30+ stingers per pack</li>
-              <li>Mono &amp; stereo versions</li>
-              <li>Game-ready &amp; film-ready cuts</li>
-            </ul>
-          </article>
+        <article class="work-card">
+          <span class="card-corner">01</span>
+          <h3>Jumpscares</h3>
+          <p>short, brutal stingers built to make people drop their headphones. layered hits, tape-warped screeches, sub-bass slams.</p>
+        </article>
 
-          <article class="work-card">
-            <div class="work-card-top">
-              <span class="work-tag">LOOP</span>
-              <span class="work-id">FILE_02</span>
-            </div>
-            <h3 class="work-title">Ambient Horror Loops</h3>
-            <p class="work-desc">
-              Seamless, looping dread — drones, detuned pads, distant room
-              tones, and slow-building textures for hallways, basements,
-              and the long quiet before something happens.
-            </p>
-            <ul class="work-meta">
-              <li>Seamless loop points</li>
-              <li>2–8 min builds</li>
-              <li>Layered stems available</li>
-            </ul>
-          </article>
+        <article class="work-card">
+          <span class="card-corner">02</span>
+          <h3>Ambient Loops</h3>
+          <p>dread you can leave running. room tones, drones, and slow-build textures for hallways, basements, and the quiet part before something happens.</p>
+        </article>
 
-          <article class="work-card">
-            <div class="work-card-top">
-              <span class="work-tag">SFX</span>
-              <span class="work-id">FILE_03</span>
-            </div>
-            <h3 class="work-title">UI / Game SFX Sets</h3>
-            <p class="work-desc">
-              Functional horror UI — menu clicks, inventory sounds, item
-              pickups, footsteps, and interaction cues that stay quietly
-              unsettling without breaking gameplay flow.
-            </p>
-            <ul class="work-meta">
-              <li>Organized SFX libraries</li>
-              <li>Engine-ready naming</li>
-              <li>Unity / Unreal friendly</li>
-            </ul>
-          </article>
+        <article class="work-card">
+          <span class="card-corner">03</span>
+          <h3>OST / Score Work</h3>
+          <p>full scoring for games, fan projects, and original horror concepts — chase themes, ambience, and orchestral cues built scene by scene.</p>
+        </article>
 
-          <article class="work-card">
-            <div class="work-card-top">
-              <span class="work-tag">CUSTOM</span>
-              <span class="work-id">FILE_04</span>
-            </div>
-            <h3 class="work-title">Analog Horror Scoring</h3>
-            <p class="work-desc">
-              Full audio design for analog horror shorts and series —
-              degraded broadcast tones, EAS-style alert textures, VHS
-              warble, and narrative sound design built scene-by-scene.
-            </p>
-            <ul class="work-meta">
-              <li>Full episode scoring</li>
-              <li>Broadcast-damage textures</li>
-              <li>Revisions included</li>
-            </ul>
-          </article>
+        <article class="work-card">
+          <span class="card-corner">04</span>
+          <h3>Game &amp; UI SFX</h3>
+          <p>menu clicks, pickups, footsteps — functional sound that still feels a little off, the way good horror UI should.</p>
+        </article>
 
-        </div>
       </div>
     </section>
 
-    <!-- ============ AUDIO ============ -->
-    <section class="audio" id="audio">
-      <div class="section-inner">
-        <div class="section-head">
-          <span class="section-tag">003 / PLAYBACK</span>
-          <h2 class="section-title">Listen.</h2>
-          <p class="section-sub">A few samples from the archive. Headphones recommended. Lights off, optional.</p>
+    <!-- ============ LISTEN ============ -->
+    <section class="listen" id="listen">
+      <h2 class="section-title">listen<span class="title-static">_</span></h2>
+      <p class="listen-sub">a few tracks from the SoundCloud. headphones on, lights off.</p>
+
+      <!--
+        AUDIO EMBEDS — real tracks from soundcloud.com/kvs-productions
+        To add more: copy a .track-embed block, swap the track URL in the
+        iframe src (the %2F bits are just URL-encoded slashes), and update
+        the title above it.
+      -->
+      <div class="track-list">
+
+        <div class="track-embed">
+          <p class="track-name">Prevailing Hope <span>(OST)</span></p>
+          <iframe
+            title="Prevailing Hope (OST) — SoundCloud player"
+            width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
+            src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fkvs-productions%2Fprevailing-hope&color=%23b3261e&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false">
+          </iframe>
         </div>
+
+        <div class="track-embed">
+          <p class="track-name">Netamo Fan-made Jumpscare</p>
+          <iframe
+            title="Netamo Fan-made Jumpscare — SoundCloud player"
+            width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
+            src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fkvs-productions%2Fnetamo-fan-made-jumpscare&color=%23b3261e&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false">
+          </iframe>
+        </div>
+
+        <div class="track-embed">
+          <p class="track-name">The Ghoul <span>(OST)</span></p>
+          <iframe
+            title="The Ghoul (OST) — SoundCloud player"
+            width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
+            src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fkvs-productions%2Fambience-2&color=%23b3261e&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false">
+          </iframe>
+        </div>
+
+      </div>
+
+      <a href="https://soundcloud.com/kvs-productions" target="_blank" rel="noopener noreferrer" class="more-link">
+        hear more on SoundCloud →
+      </a>
+    </section>
+
+    <!-- ============ HIRE ME / CONTACT ============ -->
+    <section class="hire" id="hire">
+      <h2 class="section-title">hire me<span class="title-static">_</span></h2>
+      <p class="listen-sub">got a project that needs to sound wrong in the right way? reach out.</p>
+
+      <div class="hire-grid">
+
+        <a class="hire-card" href="mailto:contact@kvsproductions.com">
+          <span class="hire-label">email</span>
+          <span class="hire-value">contact@kvsproductions.com</span>
+        </a>
+
+        <div class="hire-card hire-card-static">
+          <span class="hire-label">discord</span>
+          <span class="hire-value">kvs_productions</span>
+        </div>
+
+        <a class="hire-card" href="https://soundcloud.com/kvs-productions" target="_blank" rel="noopener noreferrer">
+          <span class="hire-label">soundcloud</span>
+          <span class="hire-value">@kvs-productions</span>
+        </a>
 
         <!--
-          AUDIO EMBEDS
-          Replace the iframe "src" below with your real SoundCloud or YouTube embed links.
-
-          SoundCloud: Share -> Embed -> copy the src URL from their <iframe>.
-          YouTube:   use https://www.youtube.com/embed/VIDEO_ID
+          FIVERR — no gig live yet, so this is a clearly-marked
+          "coming soon" placeholder instead of a dead link.
+          Once the gig exists: change the href to the real URL,
+          remove the "soon-badge" span, and delete this comment.
         -->
-        <div class="audio-grid">
+        <a class="hire-card hire-card-soon" href="#" onclick="return false;" aria-disabled="true">
+          <span class="hire-label">fiverr <span class="soon-badge">soon</span></span>
+          <span class="hire-value">gig coming soon</span>
+        </a>
 
-          <div class="audio-card">
-            <div class="audio-card-label">
-              <span>TRACK_01</span>
-              <span>Ambient Loop — Reel A</span>
-            </div>
-            <div class="embed-wrap embed-soundcloud">
-              <iframe
-                title="SoundCloud embed placeholder — Ambient Loop Reel A"
-                width="100%"
-                height="166"
-                scrolling="no"
-                frameborder="no"
-                allow="autoplay"
-                src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fyour-profile%2Fyour-track&color=%23b3261e&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false">
-              </iframe>
-            </div>
-          </div>
-
-          <div class="audio-card">
-            <div class="audio-card-label">
-              <span>TRACK_02</span>
-              <span>Jumpscare Demo Reel</span>
-            </div>
-            <div class="embed-wrap embed-youtube">
-              <iframe
-                title="YouTube embed placeholder — Jumpscare Demo Reel"
-                width="100%"
-                height="220"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-              </iframe>
-            </div>
-          </div>
-
-          <div class="audio-card">
-            <div class="audio-card-label">
-              <span>TRACK_03</span>
-              <span>UI / Game SFX Set</span>
-            </div>
-            <div class="embed-wrap embed-soundcloud">
-              <iframe
-                title="SoundCloud embed placeholder — UI Game SFX Set"
-                width="100%"
-                height="166"
-                scrolling="no"
-                frameborder="no"
-                allow="autoplay"
-                src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fyour-profile%2Fanother-track&color=%23b3261e&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false">
-              </iframe>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ CONTACT ============ -->
-    <section class="contact" id="contact">
-      <div class="section-inner">
-        <div class="section-head">
-          <span class="section-tag">004 / TRANSMIT</span>
-          <h2 class="section-title">Send a signal.</h2>
-          <p class="section-sub">Got a project, a brief, or just a weird idea you want to sound right? Reach out.</p>
-        </div>
-
-        <div class="contact-grid">
-
-          <a class="contact-card" href="mailto:contact@kvsproductions.com">
-            <span class="contact-label">Email</span>
-            <span class="contact-value">contact@kvsproductions.com</span>
-            <span class="contact-arrow">→</span>
-          </a>
-
-          <!-- Discord has no public web link by default, so this is shown as plain text to copy -->
-          <div class="contact-card contact-card-static">
-            <span class="contact-label">Discord</span>
-            <span class="contact-value">kvs_productions</span>
-            <span class="contact-arrow">⧉</span>
-          </div>
-
-          <a class="contact-card" href="https://your-soundcloud-link" target="_blank" rel="noopener noreferrer">
-            <span class="contact-label">SoundCloud</span>
-            <span class="contact-value">@kvsproductions</span>
-            <span class="contact-arrow">→</span>
-          </a>
-
-          <a class="contact-card" href="https://your-youtube-link" target="_blank" rel="noopener noreferrer">
-            <span class="contact-label">YouTube</span>
-            <span class="contact-value">@kvsproductions</span>
-            <span class="contact-arrow">→</span>
-          </a>
-
-        </div>
       </div>
     </section>
 
   </main>
 
   <footer class="site-footer">
-    <div class="footer-inner">
-      <span>KVS PRODUCTIONS — EST. <span id="year"></span></span>
-      <span class="footer-static">END OF TRANSMISSION</span>
-    </div>
+    <span>KVS PRODUCTIONS</span>
+    <span class="footer-static">NO SIGNAL — END OF BROADCAST</span>
   </footer>
 
-  <script src="script.js"></script>
+</div><!-- /#tv -->
+
+<script src="script.js"></script>
 </body>
 </html>
