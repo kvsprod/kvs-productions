@@ -1,32 +1,37 @@
 /* ============================================================
    KVS PRODUCTIONS — SCRIPT
    ------------------------------------------------------------
-   Kept intentionally minimal. CSS handles all animation/glitch
-   effects — this file only does two small, practical things:
+   Small and optional. CSS handles all continuous animation
+   (scanlines, vignette, rec dot). This file just adds two
+   one-off interactive touches:
 
-   1. Auto-fills the current year in the footer.
-   2. Adds a one-time "static burst" class to the hero title
-      when the page first loads, then removes it (purely a nice-
-      to-have visual beat — safe to delete this whole block if
-      you don't want it).
+   1. A "power on" flicker on the #tv frame when the page loads.
+   2. A quick RGB-split static glitch on the hero title and work
+      cards when you hover/tap them — like the signal hiccups.
+
+   Delete either block freely if you don't want that behaviour.
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  // 1. Footer year
-  var yearEl = document.getElementById('year');
-  if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
+  // 1. Power-on flicker, once, on load
+  var tv = document.getElementById('tv');
+  if (tv) {
+    tv.classList.add('power-on');
+    window.setTimeout(function () {
+      tv.classList.remove('power-on');
+    }, 800);
   }
 
-  // 2. One-off glitch burst on load (adds/removes a class that
-  //    you can hook extra keyframes onto in style.css if desired)
-  var title = document.querySelector('.hero-title');
-  if (title) {
-    title.classList.add('glitch-burst');
-    window.setTimeout(function () {
-      title.classList.remove('glitch-burst');
-    }, 1200);
-  }
+  // 2. Hover/tap static glitch on the hero title + work cards
+  var glitchTargets = document.querySelectorAll('.hero-title, .work-card h3');
+  glitchTargets.forEach(function (el) {
+    el.addEventListener('mouseenter', function () {
+      el.classList.add('glitch-now');
+      window.setTimeout(function () {
+        el.classList.remove('glitch-now');
+      }, 260);
+    });
+  });
 
 });
