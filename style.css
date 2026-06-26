@@ -12,15 +12,16 @@
 
    Sections in this file:
    1. Variables + reset
-   2. TV frame + CRT overlay effects
-   3. Header / nav
-   4. Hero + glitch title
-   5. About
-   6. Work grid
-   7. Listen / audio embeds
-   8. Hire me / contact
-   9. Footer
-   10. Responsive
+   2. Outer backdrop (the area behind the TV frame on desktop)
+   3. TV frame + CRT overlay effects
+   4. Header / nav
+   5. Hero + glitch title
+   6. About
+   7. Work grid
+   8. Listen / audio embeds
+   9. Hire me / contact
+   10. Footer
+   11. Responsive
    ============================================================ */
 
 
@@ -36,7 +37,11 @@
   --red:        #a4201c;     /* dried blood, desaturated */
   --red-bright: #d6342c;     /* used only for tiny accents/hover, never large fills */
 
-  --font-display: 'Fjalla One', cursive;
+  /* IMPORTANT: every family named here must also be requested in the
+     <link> tag in index.html's <head>, or the browser silently falls
+     back to a system font (this is why things looked like Comic Sans
+     before — Space Mono was used here but never loaded). */
+  --font-display: 'Fjalla One', sans-serif;
   --font-body:    'Nunito', sans-serif;
   --font-mono:    'Space Mono', monospace;
 
@@ -79,7 +84,57 @@ a:focus-visible, button:focus-visible {
 }
 
 
-/* ---------- 2. TV FRAME + CRT OVERLAY EFFECTS ---------- */
+/* ---------- 2. OUTER BACKDROP ---------- */
+/*
+  On wide/desktop screens, #tv is capped at 1200px and centered,
+  which leaves black space on either side. .backdrop fills that
+  space with a faint, slow-moving grid + grain texture so it
+  reads as "the room around the TV" rather than dead empty black.
+
+  It's fixed behind everything (z-index below #tv) and entirely
+  decorative — turned off automatically on narrow/mobile screens
+  in the responsive section, since there's no margin to fill there.
+*/
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: #000;
+}
+
+/* faint grid of vertical/horizontal lines, like graph paper in the dark,
+   slowly drifting diagonally so it doesn't feel static/dead */
+.backdrop-grid {
+  position: absolute;
+  inset: -50px;
+  background-image:
+    linear-gradient(rgba(164,32,28,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(164,32,28,0.06) 1px, transparent 1px);
+  background-size: 42px 42px;
+  animation: backdrop-drift 40s linear infinite;
+}
+@keyframes backdrop-drift {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(42px, 42px); }
+}
+
+/* fine grain dust over the grid, same texture style used elsewhere on
+   the page so it feels consistent rather than like a separate effect */
+.backdrop-noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.5;
+  background-image:
+    repeating-radial-gradient(circle at 20% 30%, #fff 0, transparent 1px),
+    repeating-radial-gradient(circle at 70% 60%, #fff 0, transparent 1px),
+    repeating-radial-gradient(circle at 40% 80%, #fff 0, transparent 1px);
+  background-size: 3px 3px, 5px 5px, 7px 7px;
+  mix-blend-mode: overlay;
+}
+
+
+/* ---------- 3. TV FRAME + CRT OVERLAY EFFECTS ---------- */
 /*
   #tv is the "screen" the whole site sits inside. The curved
   corners + dark edge vignette make it read like a CRT tube
@@ -87,6 +142,7 @@ a:focus-visible, button:focus-visible {
 */
 #tv {
   position: relative;
+  z-index: 1;
   max-width: 1200px;
   margin: 0 auto;
   background: var(--screen);
@@ -128,20 +184,38 @@ a:focus-visible, button:focus-visible {
   background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.55) 100%);
 }
 
-/* occasional brighter scan-band that drifts down the screen */
+/*
+  Drifting scan-band that sweeps down the screen.
+  Previously this was a hard 120px gradient block that "jumped" from
+  the bottom back to the top, which is the "looks a bit weird" part.
+  Fixed by:
+    - making the band taller + softer (wider gradient, lower opacity)
+      so it's barely noticeable instead of looking like a visible bar
+    - using a smooth ease-in-out timing instead of linear, so the
+      reset at the top isn't an abrupt jolt
+    - slowing it down (14s instead of 9s) so it reads as ambient
+      drift rather than a repeating glitch
+*/
 .crt-flicker {
   position: absolute;
   left: 0; right: 0;
-  height: 120px;
-  top: -120px;
+  height: 220px;
+  top: -220px;
   z-index: 48;
   pointer-events: none;
-  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.05), transparent);
-  animation: scan-drift 9s linear infinite;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255,255,255,0.035) 45%,
+    rgba(255,255,255,0.035) 55%,
+    transparent
+  );
+  animation: scan-drift 14s ease-in-out infinite;
 }
 @keyframes scan-drift {
-  0%   { top: -120px; }
-  100% { top: 100%; }
+  0%   { top: -220px; }
+  50%  { top: 60%; }
+  100% { top: 130%; }
 }
 
 /* page "power on" flicker — runs once on load via JS-added class */
@@ -170,7 +244,7 @@ a:focus-visible, button:focus-visible {
 }
 
 
-/* ---------- 3. HEADER / NAV ---------- */
+/* ---------- 4. HEADER / NAV ---------- */
 .site-header {
   position: relative;
   z-index: 60;
@@ -221,7 +295,7 @@ a:focus-visible, button:focus-visible {
 .site-header nav a:hover { color: var(--off-white); }
 
 
-/* ---------- 4. HERO ---------- */
+/* ---------- 5. HERO ---------- */
 .hero {
   position: relative;
   z-index: 10;
@@ -314,7 +388,7 @@ a:focus-visible, button:focus-visible {
 }
 
 
-/* ---------- 5. ABOUT ---------- */
+/* ---------- 6. ABOUT ---------- */
 .about {
   position: relative;
   z-index: 10;
@@ -330,7 +404,7 @@ a:focus-visible, button:focus-visible {
 }
 
 
-/* ---------- 6. WORK GRID ---------- */
+/* ---------- 7. WORK GRID ---------- */
 .work {
   position: relative;
   z-index: 10;
@@ -391,7 +465,7 @@ a:focus-visible, button:focus-visible {
 }
 
 
-/* ---------- 7. LISTEN / AUDIO ---------- */
+/* ---------- 8. LISTEN / AUDIO ---------- */
 .listen {
   position: relative;
   z-index: 10;
@@ -452,7 +526,7 @@ a:focus-visible, button:focus-visible {
 .more-link:hover { border-color: var(--red-bright); }
 
 
-/* ---------- 8. HIRE ME / CONTACT ---------- */
+/* ---------- 9. HIRE ME / CONTACT ---------- */
 .hire {
   position: relative;
   z-index: 10;
@@ -521,7 +595,7 @@ a.hire-card:hover {
 }
 
 
-/* ---------- 9. FOOTER ---------- */
+/* ---------- 10. FOOTER ---------- */
 .site-footer {
   position: relative;
   z-index: 10;
@@ -539,7 +613,7 @@ a.hire-card:hover {
 .footer-static { color: var(--red); }
 
 
-/* ---------- 10. RESPONSIVE ---------- */
+/* ---------- 11. RESPONSIVE ---------- */
 @media (max-width: 700px) {
   .work-grid,
   .hire-grid {
@@ -548,4 +622,8 @@ a.hire-card:hover {
   .site-header nav { gap: 12px; }
   .site-header nav a { font-size: 0.72rem; }
   #tv { border-radius: 18px; }
+
+  /* no visible margin around #tv on mobile, so the backdrop
+     texture is just wasted GPU work behind a full-bleed screen */
+  .backdrop { display: none; }
 }
