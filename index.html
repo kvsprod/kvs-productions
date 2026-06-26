@@ -9,16 +9,29 @@
 <!-- Favicon (browser tab icon) — points at the logo image in the repo -->
 <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/kvsprod/kvs-productions/refs/heads/main/logo.png">
 
-<!-- Two fonts only: a slightly creepy condensed display face for headings,
-     and a soft rounded sans for body text so the site feels approachable
-     up close even though the theme is horror. -->
+<!-- Fonts: Fjalla One for headings, Nunito for body text, Space Mono for
+     the little monospace labels (nav, buttons, track names). All three
+     MUST be listed here together or the ones left out silently fall back
+     to your system's default font instead of failing loudly. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Nunito:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<!-- =========================================================
+     OUTER BACKDROP
+     This sits behind #tv and fills the black margin you see
+     around the screen on wider/desktop viewports. Pure CSS,
+     no images — a slow-drifting grid + noise texture so that
+     space doesn't feel like empty dead space.
+     ========================================================= -->
+<div class="backdrop" aria-hidden="true">
+  <div class="backdrop-grid"></div>
+  <div class="backdrop-noise"></div>
+</div>
 
 <!-- =========================================================
      TV FRAME
@@ -134,11 +147,11 @@
         </div>
 
         <div class="track-embed">
-          <p class="track-name">Netamo Fan-made Jumpscare <span>(SFX Jumpscare)</span></p>
+          <p class="track-name">Jumpscare <span>(SFX Jumpscare)</span></p>
           <iframe
             title="Jumpscare — SoundCloud player"
             width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
-            src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fkvs-productions%2Fnetamo-fan-made-jumpscare&color=%23b3261e&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false">
+            src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fkvs-productions%2Fjumpscare&color=%23b3261e&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false">
           </iframe>
         </div>
 
@@ -165,7 +178,7 @@
 
       <div class="hire-grid">
 
-        <a class="hire-card" href="mailto:contact@kvsproductions.com">
+        <a class="hire-card" href="mailto:productionby.kvs@gmail.com">
           <span class="hire-label">email</span>
           <span class="hire-value">productionby.kvs@gmail.com</span>
         </a>
