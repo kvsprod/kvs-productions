@@ -6,13 +6,9 @@
 <title>KVS Productions Portfolio</title>
 <meta name="description" content="KVS Productions — horror sound design portfolio. Jumpscares, ambient horror loops, and OST work.">
 
-<!-- Favicon (browser tab icon) — points at the logo image in the repo -->
 <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/kvsprod/kvs-productions/refs/heads/main/logo.png">
 
-<!-- Fonts: Fjalla One for headings, Nunito for body text, Space Mono for
-     the little monospace labels (nav, buttons, track names). All three
-     MUST be listed here together or the ones left out silently fall back
-     to your system's default font instead of failing loudly. -->
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Nunito:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -21,33 +17,19 @@
 </head>
 <body>
 
-<!-- =========================================================
-     OUTER BACKDROP
-     This sits behind #tv and fills the black margin you see
-     around the screen on wider/desktop viewports. Pure CSS,
-     no images — a slow-drifting grid + noise texture so that
-     space doesn't feel like empty dead space.
-     ========================================================= -->
+
 <div class="backdrop" aria-hidden="true">
   <div class="backdrop-grid"></div>
   <div class="backdrop-noise"></div>
 </div>
 
-<!-- =========================================================
-     TV FRAME
-     Everything lives inside #tv. This div is what gets the
-     curved-corner mask, the scanlines, the vignette, and the
-     flicker-on-load animation — like the whole site is being
-     watched on an old television.
-     ========================================================= -->
+
 <div id="tv">
 
-  <!-- overlay layers, purely decorative -->
   <div class="crt-scanlines" aria-hidden="true"></div>
   <div class="crt-vignette" aria-hidden="true"></div>
   <div class="crt-flicker" aria-hidden="true"></div>
 
-  <!-- ============ NAV ============ -->
   <header class="site-header">
     <a href="#top" class="logo-mark">
       <span class="logo-rec" aria-hidden="true"></span>
@@ -62,7 +44,6 @@
 
   <main id="top">
 
-    <!-- ============ HERO ============ -->
     <section class="hero">
       <div class="static-burst" aria-hidden="true"></div>
 
@@ -80,7 +61,6 @@
       </div>
     </section>
 
-    <!-- ============ ABOUT (short, personal, no corporate-speak) ============ -->
     <section class="about">
       <p>
         hi, i'm the person behind KVS Productions..! i make horror audio.
@@ -91,7 +71,7 @@
       </p>
     </section>
 
-    <!-- ============ WORK ============ -->
+
     <section class="work" id="work">
       <h2 class="section-title">things i've made<span class="title-static">_</span></h2>
 
@@ -124,17 +104,11 @@
       </div>
     </section>
 
-    <!-- ============ LISTEN ============ -->
     <section class="listen" id="listen">
       <h2 class="section-title">listen<span class="title-static">_</span></h2>
       <p class="listen-sub">a few tracks from my soundcloud.</p>
 
-      <!--
-        AUDIO EMBEDS — real tracks from soundcloud.com/kvs-productions
-        To add more: copy a .track-embed block, swap the track URL in the
-        iframe src (the %2F bits are just URL-encoded slashes), and update
-        the title above it.
-      -->
+
       <div class="track-list">
 
         <div class="track-embed">
@@ -171,7 +145,6 @@
       </a>
     </section>
 
-    <!-- ============ HIRE ME / CONTACT ============ -->
     <section class="hire" id="hire">
       <h2 class="section-title">hire me<span class="title-static">_</span></h2>
       <p class="listen-sub">got a project that needs to sound wrong in the right way? reach out to me.!</p>
@@ -193,15 +166,10 @@
           <span class="hire-value">@kvs-productions</span>
         </a>
 
-        <!--
-          FIVERR — no gig live yet, so this is a clearly-marked
-          "coming soon" placeholder instead of a dead link.
-          Once the gig exists: change the href to the real URL,
-          remove the "soon-badge" span, and delete this comment.
-        -->
-        <a class="hire-card hire-card-soon" href="#" onclick="return false;" aria-disabled="true">
-          <span class="hire-label">fiverr <span class="soon-badge">soon</span></span>
-          <span class="hire-value">gig coming soon</span>
+
+        <a class="hire-card hire-card-soon" href="http://www.fiverr.com/s/vvlVKPL" onclick="return false;" aria-disabled="true">
+          <span class="hire-label">fiverr</span>
+          <span class="hire-value">gig</span>
         </a>
 
       </div>
@@ -214,7 +182,7 @@
     <span class="footer-static">NO SIGNAL</span>
   </footer>
 
-</div><!-- /#tv -->
+</div>
 
 <script src="script.js"></script>
 </body>
